@@ -15,3 +15,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `Layout.js` imports all other main components, routing is set up here
 
 `Landing.js` is the Landing page upon app launch.
+
+`NotFound.js` is the 404 component when user accesses an unkown URL.
