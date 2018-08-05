@@ -2,6 +2,10 @@ import React, { Component } from "react";
 
 // components
 import TeamNameForm from "./TeamNameForm";
+import Roster from "./Roster";
+
+// styling
+import "./Team.css";
 
 class Team extends Component {
   state = {
@@ -49,14 +53,26 @@ class Team extends Component {
         teamNameHandler={this.teamNameHandler}
       />
     ) : (
-      <button onClick={this.formToggle}>Update Team Name</button>
+      <button className="update-team-btn" onClick={this.formToggle}>
+        Update Team Name
+      </button>
     );
 
+    // if teamName does not exist, hide Roster
+    const rosterRender = teamName ? <Roster /> : null;
+
     return (
-      <div>
-        <h1>{teamNameRender} Roster</h1>
+      <div className="team-container">
+        <div className="content">
+          <h1>{teamNameRender} Roster</h1>
+          <p>
+            Create Your Roster{" "}
+            <small>(must have team name to create roster)</small>
+          </p>
+        </div>
+
         {showFormRender}
-        <h1>Roster Component</h1>
+        {rosterRender}
       </div>
     );
   }
