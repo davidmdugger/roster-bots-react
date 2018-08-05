@@ -28,7 +28,7 @@ table tr {
 }
 
 table tr:nth-child(1):before,
-table tr:nth-child(11):before {
+table tr:nth-child(12):before {
   position: absolute;
   width: 98%;
   border-bottom: 1px solid #ccc;
@@ -39,12 +39,12 @@ table tr:nth-child(11):before {
   font-size: 2em;
 }
 
-table tr:nth-child(11):before {
+table tr:nth-child(12):before {
   content: "Subs";
 }
 
 table tr:nth-child(1),
-table tr:nth-child(11) {
+table tr:nth-child(12) {
   margin-top: 75px;
 }
 

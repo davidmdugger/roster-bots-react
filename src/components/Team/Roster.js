@@ -67,7 +67,7 @@ class Roster extends Component {
       newPlayer.agility =
         newPlayer.totalAttrScore - (newPlayer.speed + newPlayer.strength);
 
-      rosterCopy.unshift(newPlayer);
+      rosterCopy.push(newPlayer);
 
       this.setState({ roster: rosterCopy });
     }
@@ -86,8 +86,8 @@ class Roster extends Component {
     const { roster, showForm } = this.props;
     const rosterLength = roster.length;
 
-    // if the user needs to add a team name, or is updating it, hide roster, otherwise show roster
-    const showOrHide = !showForm ? "show" : "hide";
+    // if the TeamNameForm is shown, hide the roster
+    const showOrHide = showForm ? "hide" : "show";
 
     // if roster is already 15 players, disable generate roster buttons
     const disabled = rosterLength === 15 ? "disable" : "";
