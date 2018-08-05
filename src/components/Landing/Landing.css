@@ -22,7 +22,7 @@
 #main #main-content {
   width: 100%;
   height: 100%;
-  background-color: rgba(50, 50, 50, 0.3);
+  /* background-color: rgba(50, 50, 50, 0.3); */
 }
 
 .title {
@@ -35,6 +35,7 @@
   width: 100vw;
   height: 20vh;
   background-color: #ccc;
+  text-align: center;
 }
 
 #menu .roster-layout {
@@ -51,18 +52,18 @@
 }
 
 #menu .new-roster {
-  background-color: #81ecec;
+  background-color: #f9fdfe;
   transition: linear 250ms;
 }
 
 #menu .current-roster {
-  background-color: #00b894;
+  background-color: #c7d3c9;
   transition: linear 250ms;
 }
 
 .rules {
   flex: 1;
-  background-color: #e17055;
+  background-color: #a68859;
 }
 
 /* MEDIA QUERIES */
