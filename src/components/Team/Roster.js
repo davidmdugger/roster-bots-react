@@ -7,10 +7,6 @@ import {
 } from "../../helper";
 
 class Roster extends Component {
-  // state = {
-  //   roster: []
-  // };
-
   // create random player
   generatePlayer = () => {
     const rosterCopy = this.props.roster;

@@ -27,13 +27,25 @@ table tr {
   padding: 5px;
 }
 
-/* table tr:nth-child(11):before {
-  margin-top: 25px;
-  content: "Sub: ";
-} */
+table tr:nth-child(1):before,
+table tr:nth-child(11):before {
+  position: absolute;
+  width: 98%;
+  border-bottom: 1px solid #ccc;
+  padding: 4px;
+  margin-top: -45px;
+  content: "Starters";
+  font-family: Orbitron;
+  font-size: 2em;
+}
 
+table tr:nth-child(11):before {
+  content: "Subs";
+}
+
+table tr:nth-child(1),
 table tr:nth-child(11) {
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 table tbody tr:nth-child(even) {
