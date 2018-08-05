@@ -7,13 +7,13 @@ import {
 } from "../../helper";
 
 class Roster extends Component {
-  state = {
-    roster: []
-  };
+  // state = {
+  //   roster: []
+  // };
 
   // create random player
   generatePlayer = () => {
-    const rosterCopy = this.state.roster;
+    const rosterCopy = this.props.roster;
 
     // if roster length maxed alert user
     if (rosterCopy.length >= 15) {
@@ -78,7 +78,7 @@ class Roster extends Component {
   };
 
   generateFullRoster = () => {
-    const { roster } = this.state;
+    const { roster } = this.props;
 
     // as long as roster isn't full, generate a new player
     while (roster.length < 15) {
@@ -87,8 +87,11 @@ class Roster extends Component {
   };
 
   render() {
-    const { roster } = this.state;
+    const { roster, showForm } = this.props;
     const rosterLength = roster.length;
+
+    // if the user needs to add a team name, or is updating it, hide roster, otherwise show roster
+    const showOrHide = !showForm ? "show" : "hide";
 
     // if roster is already 15 players, disable generate roster buttons
     const disabled = rosterLength === 15 ? "disable" : "";
@@ -127,7 +130,7 @@ class Roster extends Component {
 
     return (
       <div>
-        <div>
+        <div className="generate-players-buttons">
           {renderDisabledMsg}
           <button disabled={disabled} onClick={this.generatePlayer}>
             Generate Random Player
@@ -136,7 +139,7 @@ class Roster extends Component {
             Create Entire Roster
           </button>
         </div>
-        <table>
+        <table className={showOrHide}>
           <tbody>
             <tr>
               <th>Name</th>

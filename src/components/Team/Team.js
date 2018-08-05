@@ -10,7 +10,8 @@ import "./Team.css";
 class Team extends Component {
   state = {
     teamName: "",
-    showForm: true
+    showForm: true,
+    roster: []
   };
 
   // monitor input value change
@@ -34,13 +35,13 @@ class Team extends Component {
     }
   };
 
-  // show Team Name form if true, show button if false
+  // show or hide form
   formToggle = () => {
     this.setState({ showForm: !this.state.showForm });
   };
 
   render() {
-    const { teamName, showForm } = this.state;
+    const { teamName, showForm, roster } = this.state;
 
     // show string "Team" or show Team name if Team name exists
     const teamNameRender = teamName.length < 1 ? "Team" : teamName;
@@ -53,13 +54,12 @@ class Team extends Component {
         teamNameHandler={this.teamNameHandler}
       />
     ) : (
-      <button className="update-team-btn" onClick={this.formToggle}>
-        Update Team Name
-      </button>
+      <div>
+        <button className="update-team-btn" onClick={this.formToggle}>
+          Update Team Name
+        </button>
+      </div>
     );
-
-    // if teamName does not exist, hide Roster
-    const rosterRender = teamName ? <Roster /> : null;
 
     return (
       <div className="team-container">
@@ -72,7 +72,7 @@ class Team extends Component {
         </div>
 
         {showFormRender}
-        {rosterRender}
+        <Roster showForm={showForm} roster={roster} teamName={teamName} />
       </div>
     );
   }

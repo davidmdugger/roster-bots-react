@@ -27,6 +27,15 @@ table tr {
   padding: 5px;
 }
 
+/* table tr:nth-child(11):before {
+  margin-top: 25px;
+  content: "Sub: ";
+} */
+
+table tr:nth-child(11) {
+  margin-top: 50px;
+}
+
 table tbody tr:nth-child(even) {
   background-color: #85ffe5;
 }
@@ -39,9 +48,23 @@ tr td {
   align-items: center;
 }
 
+.generate-players-buttons {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 500px) {
   table {
     font-size: 1em;
   }
+}
+
+.show {
+  transform: scale(1);
+}
+
+.hide {
+  transform: scale(0);
 }

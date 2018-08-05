@@ -1,16 +1,19 @@
 import React from "react";
 
 const TeamNameForm = props => {
+  const { teamName, onChange, teamNameHandler } = props;
+
   return (
-    <form onSubmit={props.teamNameHandler}>
+    <form onSubmit={teamNameHandler}>
       <input
         name="teamName"
         type="text"
         placeholder="Your Team Name"
-        onChange={props.onChange}
-        value={props.teamName}
+        onChange={onChange}
+        value={teamName}
       />
-      <input type="submit" value="Create Team Name" />
+      <small>Team Name</small>
+      <input type="submit" value="Submit Team Name" />
     </form>
   );
 };
