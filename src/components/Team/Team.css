@@ -8,3 +8,40 @@
   top: 0;
   right: 0;
 }
+
+/* Roster */
+.roster-container {
+  width: 85%;
+  margin: 40px auto;
+}
+
+table {
+  width: 90%;
+  margin: 40px auto;
+  overflow: scroll;
+  font-size: 0.75em;
+}
+
+table tr {
+  display: flex;
+  padding: 5px;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #85ffe5;
+}
+
+tr th,
+tr td {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 500px) {
+  table {
+    font-size: 1em;
+  }
+}
