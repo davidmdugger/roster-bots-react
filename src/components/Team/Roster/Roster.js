@@ -4,7 +4,7 @@ import {
   generateID,
   firstNames,
   lastNames
-} from "../../helper";
+} from "../../../helper";
 
 class Roster extends Component {
   // create random player

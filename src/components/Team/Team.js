@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // components
 import TeamNameForm from "./TeamNameForm";
-import Roster from "./Roster";
+import Roster from "./Roster/Roster";
 
 // styling
 import "./Team.css";
