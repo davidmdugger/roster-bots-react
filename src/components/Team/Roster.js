@@ -29,21 +29,30 @@ class Roster extends Component {
       // check if first name already exists
       for (let i = 0; i < rosterCopy.length; i++) {
         if (rosterCopy[i].firstName === newPlayer.firstName) {
-          newPlayer.firstName = firstNames[generateRandomInt(0, 30)];
+          // generate a new first name until it's unique
+          while (rosterCopy[i].firstName === newPlayer.firstName) {
+            newPlayer.firstName = firstNames[generateRandomInt(0, 30)];
+          }
         }
       }
 
       // check if last name already exists
       for (let i = 0; i < rosterCopy.length; i++) {
         if (rosterCopy[i].lastName === newPlayer.lastName) {
-          newPlayer.lastName = lastNames[generateRandomInt(0, 15)];
+          // generate a new last name until it's unique
+          while (rosterCopy[i].lastName === newPlayer.lastName) {
+            newPlayer.lastName = lastNames[generateRandomInt(0, 30)];
+          }
         }
       }
 
       // check if totalAttrScore already exists
       for (let i = 0; i < rosterCopy.length; i++) {
         if (rosterCopy[i].totalAttrScore === newPlayer.totalAttrScore) {
-          newPlayer.totalAttrScore = generateRandomInt(20, 100);
+          // generate a new last name until it's unique
+          while (rosterCopy[i].totalAttrScore === newPlayer.totalAttrScore) {
+            newPlayer.totalAttrScore = generateRandomInt(20, 100);
+          }
         }
       }
 
