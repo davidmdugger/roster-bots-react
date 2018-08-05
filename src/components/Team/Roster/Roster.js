@@ -82,9 +82,20 @@ class Roster extends Component {
     }
   };
 
+  deletePlayerHandler = idx => {
+    console.log("Clicked");
+    let rosterCopy = this.props.roster;
+    console.log(idx);
+    rosterCopy.splice(idx, 1);
+
+    this.setState({ roster: rosterCopy });
+  };
+
   render() {
     const { roster, showForm } = this.props;
     const rosterLength = roster.length;
+
+    console.log(roster);
 
     // if the TeamNameForm is shown, hide the roster
     const showOrHide = showForm ? "hide" : "show";
@@ -106,7 +117,7 @@ class Roster extends Component {
           <td>You Don't have any players</td>
         </tr>
       ) : (
-        roster.map(player => {
+        roster.map((player, idx) => {
           return (
             <tr key={player.id}>
               <td>
@@ -117,7 +128,12 @@ class Roster extends Component {
               <td>{player.agility}</td>
               <td>{player.totalAttrScore}</td>
               <td>
-                <button>Edit</button>
+                <button
+                  className="delete-btn"
+                  onClick={() => this.deletePlayerHandler(idx)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           );
