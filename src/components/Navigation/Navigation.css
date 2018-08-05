@@ -1,0 +1,53 @@
+.navigation {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: #00b894;
+}
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #00b894;
+  transition: linear 250ms;
+  font-family: Orbitron, sans-serif;
+}
+
+nav.hide {
+  transform: translate3d(-200px, 0, 0);
+}
+
+nav.show {
+  transform: translate3d(0vw, 0, 0);
+  overflow: hidden;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+nav ul li {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+
+nav ul li:hover {
+  background-color: #009376;
+}
+
+/* NavButton */
+#menuToggler {
+  position: relative;
+  border: none;
+  width: 40px;
+  height: 95%;
+  z-index: 100;
+  padding: 5px;
+  background-color: #00b894;
+}
