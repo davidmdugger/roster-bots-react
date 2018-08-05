@@ -17,3 +17,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `Landing.js` is the Landing page upon app launch.
 
 `NotFound.js` is the 404 component when user accesses an unkown URL.
+
+`Team.js` is the container component that will be parent to TeamNameForm, and Roster.
