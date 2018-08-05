@@ -19,3 +19,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `NotFound.js` is the 404 component when user accesses an unkown URL.
 
 `Team.js` is the container component that will be parent to TeamNameForm, and Roster.
+
+`Roster.js` is the component that will be parent to RosterTable and RosterButtons.
