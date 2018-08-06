@@ -1,10 +1,11 @@
 import React from "react";
+import "./TeamNameForm.css";
 
 const TeamNameForm = props => {
   const { teamName, onChange, teamNameHandler } = props;
 
   return (
-    <form onSubmit={teamNameHandler}>
+    <form className="team-name-form" onSubmit={teamNameHandler}>
       <input
         name="teamName"
         type="text"

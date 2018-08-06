@@ -7,6 +7,10 @@ import {
 } from "../../../helper";
 
 class Roster extends Component {
+  state = {
+    editing: false
+  };
+
   // create random player
   generatePlayer = () => {
     const rosterCopy = this.props.roster;
@@ -82,20 +86,36 @@ class Roster extends Component {
     }
   };
 
-  deletePlayerHandler = idx => {
-    console.log("Clicked");
+  deletePlayer = idx => {
     let rosterCopy = this.props.roster;
-    console.log(idx);
+
     rosterCopy.splice(idx, 1);
 
     this.setState({ roster: rosterCopy });
   };
 
+  // monitor input value change
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onEdit = () => {
+    this.setState({ editing: true });
+  };
+
+  onEditSubmit = e => {
+    e.preventDefault();
+
+    this.props.onEditSubmit(
+      this.firstNameInput.value,
+      this.lastNameInput.value
+    );
+  };
+
   render() {
+    const { editing } = this.state;
     const { roster, showForm } = this.props;
     const rosterLength = roster.length;
-
-    console.log(roster);
 
     // if the TeamNameForm is shown, hide the roster
     const showOrHide = showForm ? "hide" : "show";
@@ -103,7 +123,7 @@ class Roster extends Component {
     // if roster is already 15 players, disable generate roster buttons
     const disabled = rosterLength === 15 ? "disable" : "";
 
-    //
+    // message when roster is full and disable buttons are set
     const renderDisabledMsg = disabled ? (
       <p>
         <small>Cannot generate players when roster is full</small>
@@ -114,15 +134,39 @@ class Roster extends Component {
       // if roster is empty, tell user
       rosterLength === 0 ? (
         <tr>
-          <td>You Don't have any players</td>
+          <td>You don't have any players</td>
         </tr>
       ) : (
         roster.map((player, idx) => {
+          const renderName = editing ? (
+            <td>
+              <form id="update-name" onSubmit={this.onEditSubmit}>
+                <input
+                  type="text"
+                  ref={firstNameInput => (this.firstNameInput = firstNameInput)}
+                  defaultValue={player.firstName}
+                  onChange={this.onChange}
+                />
+                <input
+                  type="text"
+                  ref={lastNameInput => (this.lastNameInput = lastNameInput)}
+                  defaultValue={player.lastName}
+                  onChange={this.onChange}
+                />
+                <input type="submit" value="Update" />
+              </form>
+            </td>
+          ) : (
+            <td className="name-content">
+              <button className="edit-name" onClick={this.onEdit}>
+                Edit
+              </button>
+              {`${player.firstName} ${player.lastName}`}
+            </td>
+          );
           return (
             <tr key={player.id}>
-              <td>
-                {player.firstName} {player.lastName}
-              </td>
+              {renderName}
               <td>{player.speed}</td>
               <td>{player.strength}</td>
               <td>{player.agility}</td>
@@ -130,7 +174,7 @@ class Roster extends Component {
               <td>
                 <button
                   className="delete-btn"
-                  onClick={() => this.deletePlayerHandler(idx)}
+                  onClick={() => this.deletePlayer(idx)}
                 >
                   Delete
                 </button>
@@ -141,8 +185,8 @@ class Roster extends Component {
       );
 
     return (
-      <div>
-        <div className="generate-players-buttons">
+      <div className={showOrHide}>
+        <div className={"generate-players-buttons"}>
           {renderDisabledMsg}
           <button disabled={disabled} onClick={this.generatePlayer}>
             Generate Random Player
@@ -151,7 +195,7 @@ class Roster extends Component {
             Create Entire Roster
           </button>
         </div>
-        <table className={showOrHide}>
+        <table>
           <tbody>
             <tr>
               <th>Name</th>

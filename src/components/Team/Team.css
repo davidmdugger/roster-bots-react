@@ -60,6 +60,32 @@ tr td {
   align-items: center;
 }
 
+tr .name-content {
+  justify-content: flex-start;
+}
+
+#update-name {
+  width: 100%;
+  display: flex;
+}
+
+tr td form {
+  width: 100%;
+  flex-direction: row;
+}
+
+tr td input {
+  width: 48%;
+  font-size: 0.5em;
+  margin: 0;
+  height: 20px;
+  font-size: 14px;
+}
+
+td .edit-name {
+  height: 100%;
+}
+
 .generate-players-buttons {
   width: 50%;
   margin: 0 auto;

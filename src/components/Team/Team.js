@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // components
-import TeamNameForm from "./TeamNameForm";
+import TeamNameForm from "./TeamNameForm/TeamNameForm";
 import Roster from "./Roster/Roster";
 
 // styling
@@ -40,6 +40,10 @@ class Team extends Component {
     this.setState({ showForm: !this.state.showForm });
   };
 
+  onEditSubmit = (first, last) => {
+    console.log(first, last);
+  };
+
   render() {
     const { teamName, showForm, roster } = this.state;
 
@@ -72,7 +76,14 @@ class Team extends Component {
         </div>
 
         {showFormRender}
-        <Roster showForm={showForm} roster={roster} teamName={teamName} />
+
+        <Roster
+          onChange={this.onChange}
+          showForm={showForm}
+          roster={roster}
+          teamName={teamName}
+          onEditSubmit={this.onEditSubmit}
+        />
       </div>
     );
   }
