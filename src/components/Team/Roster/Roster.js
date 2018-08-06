@@ -95,7 +95,7 @@ class Roster extends Component {
     this.setState({ roster: rosterCopy });
   };
 
-  onEdit = () => {
+  onEdit = idx => {
     this.setState({ editing: true });
   };
 
@@ -138,6 +138,7 @@ class Roster extends Component {
       ) : (
         // otherwise map through the roster
         roster.map((player, idx) => {
+          // if state.editing is true, make first and last name editable via form
           const renderName = editing ? (
             <td>
               <form
@@ -159,13 +160,14 @@ class Roster extends Component {
             </td>
           ) : (
             <td className="name-content">
-              <button className="edit-name" onClick={this.onEdit}>
+              <button className="edit-name" onClick={() => this.onEdit(idx)}>
                 Edit
               </button>
               {`${player.firstName} ${player.lastName}`}
             </td>
           );
 
+          // render the player table row without editable form
           return (
             <tr key={player.id}>
               {renderName}
