@@ -159,12 +159,13 @@ class Roster extends Component {
             </td>
           ) : (
             <td className="name-content">
-              <button className="edit-name" onClick={() => this.onEdit(idx)}>
+              <button className="edit-name" onClick={this.onEdit}>
                 Edit
               </button>
               {`${player.firstName} ${player.lastName}`}
             </td>
           );
+
           return (
             <tr key={player.id}>
               {renderName}

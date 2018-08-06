@@ -43,12 +43,19 @@ class Team extends Component {
   };
 
   onEditSubmit = (first, last, id) => {
-    let rosterCopy = this.state.roster.map(player => {
+    const rosterCopy = this.state.roster;
+
+    // map through the player, find the one with the id passed in, and update that player
+    rosterCopy.map(player => {
+      if (player.id === id) {
+        player.firstName = first;
+        player.lastName = last;
+      }
+
       return player;
     });
 
     this.setState({ roster: rosterCopy });
-    console.log("rosterCopy: ", rosterCopy);
   };
 
   render() {
