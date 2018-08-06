@@ -2,7 +2,7 @@ import React from "react";
 import "./TeamNameForm.css";
 
 const TeamNameForm = props => {
-  const { teamName, onChange, teamNameHandler } = props;
+  const { teamName, onChange, teamNameHandler, teamNameErrorRender } = props;
 
   return (
     <form className="team-name-form" onSubmit={teamNameHandler}>
@@ -13,7 +13,8 @@ const TeamNameForm = props => {
         onChange={onChange}
         value={teamName}
       />
-      <small>Team Name</small>
+      <small>Team Name {teamNameErrorRender}</small>
+
       <input type="submit" value="Submit Team Name" />
     </form>
   );

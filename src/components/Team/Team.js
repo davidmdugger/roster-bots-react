@@ -11,6 +11,7 @@ class Team extends Component {
   state = {
     teamName: "",
     showForm: true,
+    teamNameError: "",
     roster: []
   };
 
@@ -24,10 +25,11 @@ class Team extends Component {
     e.preventDefault();
 
     if (this.state.teamName === "") {
-      alert("Team Name Required");
+      this.setState({ teamNameError: " cannot be empty" });
     } else {
       this.setState({
-        teamName: this.state.teamName
+        teamName: this.state.teamName,
+        teamNameError: ""
       });
 
       // after teamName is updated, hide form
@@ -40,12 +42,21 @@ class Team extends Component {
     this.setState({ showForm: !this.state.showForm });
   };
 
-  onEditSubmit = (first, last) => {
-    console.log(first, last);
+  onEditSubmit = (first, last, id) => {
+    let rosterCopy = this.state.roster.map(player => {
+      return player;
+    });
+
+    this.setState({ roster: rosterCopy });
+    console.log("rosterCopy: ", rosterCopy);
   };
 
   render() {
-    const { teamName, showForm, roster } = this.state;
+    const { teamName, showForm, roster, teamNameError } = this.state;
+
+    // team name error
+    const teamNameErrorRender =
+      teamNameError.length > 0 ? <span>{teamNameError}</span> : null;
 
     // show string "Team" or show Team name if Team name exists
     const teamNameRender = teamName.length < 1 ? "Team" : teamName;
@@ -56,6 +67,7 @@ class Team extends Component {
         teamName={teamName}
         onChange={this.onChange}
         teamNameHandler={this.teamNameHandler}
+        teamNameErrorRender={teamNameErrorRender}
       />
     ) : (
       <div>

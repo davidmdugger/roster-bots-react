@@ -77,6 +77,7 @@ class Roster extends Component {
     }
   };
 
+  // generate the roster until 15 players are filled
   generateFullRoster = () => {
     const { roster } = this.props;
 
@@ -94,22 +95,20 @@ class Roster extends Component {
     this.setState({ roster: rosterCopy });
   };
 
-  // monitor input value change
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
   onEdit = () => {
     this.setState({ editing: true });
   };
 
-  onEditSubmit = e => {
+  onEditSubmit = (e, id) => {
     e.preventDefault();
 
     this.props.onEditSubmit(
       this.firstNameInput.value,
-      this.lastNameInput.value
+      this.lastNameInput.value,
+      id
     );
+
+    this.setState({ editing: false });
   };
 
   render() {
@@ -137,28 +136,30 @@ class Roster extends Component {
           <td>You don't have any players</td>
         </tr>
       ) : (
+        // otherwise map through the roster
         roster.map((player, idx) => {
           const renderName = editing ? (
             <td>
-              <form id="update-name" onSubmit={this.onEditSubmit}>
+              <form
+                id="update-name"
+                onSubmit={e => this.onEditSubmit(e, player.id)}
+              >
                 <input
                   type="text"
                   ref={firstNameInput => (this.firstNameInput = firstNameInput)}
                   defaultValue={player.firstName}
-                  onChange={this.onChange}
                 />
                 <input
                   type="text"
                   ref={lastNameInput => (this.lastNameInput = lastNameInput)}
                   defaultValue={player.lastName}
-                  onChange={this.onChange}
                 />
                 <input type="submit" value="Update" />
               </form>
             </td>
           ) : (
             <td className="name-content">
-              <button className="edit-name" onClick={this.onEdit}>
+              <button className="edit-name" onClick={() => this.onEdit(idx)}>
                 Edit
               </button>
               {`${player.firstName} ${player.lastName}`}
