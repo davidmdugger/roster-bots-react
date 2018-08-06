@@ -17,12 +17,6 @@ const Landing = () => {
         <div className="roster-layout new-roster">
           <h3>Create Team</h3>
           <Link to="team">
-            <img src={newRoster} alt="roster view or edit" />
-          </Link>
-        </div>
-        <div className="roster-layout current-roster">
-          <h3>View/Edit Roster</h3>
-          <Link to="roster">
             <img src={viewRoster} alt="roster view or edit" />
           </Link>
         </div>
@@ -34,6 +28,17 @@ const Landing = () => {
             <li>5 subs</li>
             <li>Unique players</li>
           </ul>
+        </div>
+        <div className="roster-layout current-roster">
+          <h4>Designed and developed</h4>
+          <h5>by David Dugger</h5>
+          <a
+            href="https://github.com/davidmdugger/roster-bots-react"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={newRoster} alt="roster view or edit" />
+          </a>
         </div>
       </div>
     </div>
